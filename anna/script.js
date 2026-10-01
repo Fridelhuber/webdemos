@@ -36,6 +36,8 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     items.forEach(function (el) { io.observe(el); });
+    /* Sicherheitsnetz: nach 2,5 s alles sichtbar, falls der Observer nicht feuert */
+    setTimeout(function () { items.forEach(function (el) { el.classList.add('is-visible'); }); }, 2500);
   }
 
   /* Speisekarte: Kategorie-Links öffnen das passende <details> */
@@ -71,6 +73,28 @@
       });
       list.insertAdjacentElement('afterend', btn);
     });
+  }
+
+  /* Sticky Bestell-Leiste (Mobil): einblenden, sobald der Hero aus dem Bild ist */
+  var bar = document.getElementById('order-bar');
+  var hero = document.querySelector('.hero');
+  if (bar && hero) {
+    var link = bar.querySelector('a');
+    function setBar(show) {
+      bar.classList.toggle('is-visible', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      if (link) link.setAttribute('tabindex', show ? '0' : '-1');
+      document.body.classList.toggle('has-order-bar', show);
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        setBar(!entries[0].isIntersecting && entries[0].boundingClientRect.bottom < 0);
+      }, { threshold: 0 }).observe(hero);
+    } else {
+      window.addEventListener('scroll', function () {
+        setBar(hero.getBoundingClientRect().bottom < 0);
+      }, { passive: true });
+    }
   }
 
   var y = document.getElementById('year');

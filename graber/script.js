@@ -9,7 +9,9 @@
   var burger = document.querySelector(".burger");
   var mobileNav = document.getElementById("mobile-nav");
   if (burger && mobileNav) {
+    var siteHeader = document.querySelector(".site-header");
     var setOpen = function (open) {
+      if (open && siteHeader) mobileNav.style.top = Math.max(0, siteHeader.getBoundingClientRect().bottom) + "px";
       burger.setAttribute("aria-expanded", open ? "true" : "false");
       burger.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
       mobileNav.classList.toggle("is-open", open);
@@ -37,28 +39,6 @@
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-  }
-
-  // Kontaktformular: Demo ohne Backend -> Anfrage an das E-Mail-Programm übergeben.
-  // Bei Live-Schaltung auf Netlify greift data-netlify; dann diesen Block entfernen.
-  var form = document.querySelector("form.anfrage");
-  if (form) {
-    var status = form.querySelector(".form-status");
-    form.addEventListener("submit", function (e) {
-      var name = form.elements["name"], kontakt = form.elements["kontakt"], msg = form.elements["nachricht"];
-      var missing = [name, kontakt, msg].filter(function (f) { return !f.value.trim(); });
-      if (missing.length) {
-        e.preventDefault();
-        missing[0].focus();
-        if (status) status.textContent = "Bitte füllen Sie alle Felder aus.";
-        return;
-      }
-      if (location.hostname.indexOf("netlify") !== -1) return; // echtes Backend vorhanden
-      e.preventDefault();
-      var body = "Name: " + name.value.trim() + "\nKontakt: " + kontakt.value.trim() + "\n\n" + msg.value.trim();
-      location.href = "mailto:mail@heikograber.de?subject=" + encodeURIComponent("Anfrage über die Website") + "&body=" + encodeURIComponent(body);
-      if (status) status.textContent = "Demo-Entwurf: Die Anfrage wird an Ihr E-Mail-Programm übergeben. Nach der Live-Schaltung landet sie direkt im Postfach der Schreinerei.";
-    });
   }
 
   // Scroll-Reveal

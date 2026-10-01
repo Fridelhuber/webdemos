@@ -5,14 +5,26 @@
   var toggle = document.querySelector(".menu-toggle");
   var mobileNav = document.getElementById("mobile-nav");
   if (toggle && mobileNav) {
+    var isOpen = function () { return toggle.getAttribute("aria-expanded") === "true"; };
     var setOpen = function (open) {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
       mobileNav.classList.toggle("is-open", open);
+      // Scroll-Lock, solange das Menü offen ist
+      document.body.classList.toggle("nav-open", open);
     };
-    toggle.addEventListener("click", function () {
-      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(!isOpen());
     });
+    // Tipp/Klick außerhalb des Menüs schließt es
+    document.addEventListener("click", function (e) {
+      if (isOpen() && !mobileNav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+    });
+    // Beim Wechsel auf Desktop-Breite Menü und Scroll-Lock aufheben
+    var mq = window.matchMedia("(min-width: 960px)");
+    var onMq = function () { if (mq.matches && isOpen()) setOpen(false); };
+    if (mq.addEventListener) mq.addEventListener("change", onMq); else if (mq.addListener) mq.addListener(onMq);
     mobileNav.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () { setOpen(false); });
     });

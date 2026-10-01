@@ -2,6 +2,29 @@
   'use strict';
   document.documentElement.classList.add('js');
 
+  // Demo-Leiste: tatsächliche Höhe messen (bei schmalen Displays zweizeilig)
+  var bar = document.querySelector('.demo-bar');
+  if (bar) {
+    var setBar = function () {
+      var h = Math.ceil(bar.getBoundingClientRect().height);
+      if (h > 0) { document.documentElement.style.setProperty('--demo-h', h + 'px'); }
+    };
+    setBar();
+    window.addEventListener('resize', setBar);
+    window.addEventListener('load', setBar);
+  }
+
+  // Referenzen: Zusatzliste auf schmalen Displays eingeklappt starten
+  var mq = window.matchMedia && window.matchMedia('(max-width: 639px)');
+  var mores = document.querySelectorAll('details.refs__more');
+  if (mq && mores.length) {
+    var syncMore = function () {
+      mores.forEach(function (d) { d.open = !mq.matches; });
+    };
+    syncMore();
+    if (mq.addEventListener) { mq.addEventListener('change', syncMore); }
+  }
+
   // Jahr im Footer
   var year = document.getElementById('year');
   if (year) { year.textContent = String(new Date().getFullYear()); }

@@ -1,6 +1,21 @@
 (function () {
   "use strict";
 
+  // Demo-Leiste: tatsächliche Höhe (ein- oder zweizeilig) als --demo-h setzen,
+  // damit Header und Mobilmenü sauber darunter beginnen.
+  var demoBar = document.querySelector(".demo-bar");
+  if (demoBar) {
+    var syncDemo = function () {
+      document.documentElement.style.setProperty("--demo-h", demoBar.offsetHeight + "px");
+    };
+    syncDemo();
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(syncDemo).observe(demoBar);
+    } else {
+      window.addEventListener("resize", syncDemo);
+    }
+  }
+
   // Jahr im Footer
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());

@@ -1,6 +1,18 @@
 (function () {
   'use strict';
 
+  // Demo-Leiste: tatsächliche Höhe als CSS-Variable (Header/Menü beginnen sauber darunter)
+  var bar = document.querySelector('.demo-bar');
+  if (bar) {
+    var setBarH = function () {
+      document.documentElement.style.setProperty('--demo-h', bar.offsetHeight + 'px');
+    };
+    setBarH();
+    window.addEventListener('resize', setBarH);
+    if ('ResizeObserver' in window) new ResizeObserver(setBarH).observe(bar);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(setBarH);
+  }
+
   // Mobile-Menü
   var burger = document.querySelector('.burger');
   var nav = document.getElementById('mobile-nav');
@@ -55,6 +67,17 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
     pending.forEach(function (el) { io.observe(el); });
+  }
+
+  // Anfrage-Formular: öffnet das E-Mail-Programm mit vorbereiteter Nachricht (kein Server, kein Fremddienst)
+  var form = document.getElementById('anfrage');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = function (id) { return (document.getElementById(id).value || '').trim(); };
+      var body = 'Name: ' + v('f-name') + '\nTelefon: ' + v('f-tel') + '\n\nAnliegen:\n' + v('f-text') + '\n\n(Fotos vom Dach oder Schaden gern als Anhang.)';
+      window.location.href = 'mailto:gebruederschein.maler.dachdecker@web.de?subject=' + encodeURIComponent('Anfrage über die Website') + '&body=' + encodeURIComponent(body);
+    });
   }
 
   // Jahr im Footer

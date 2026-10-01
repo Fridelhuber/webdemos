@@ -13,12 +13,13 @@
 </head>
 <body>
 
-  <div class="demo-bar" role="note"><span class="dot" aria-hidden="true"></span><span><strong>Demo-Entwurf von Florentin</strong> für Ludwig Seck GmbH – Autoteile &amp; Kfz-Meisterwerkstatt · nicht die offizielle Website</span></div>
+  <div class="top-stack">
+  <div class="demo-bar" role="note"><span class="dot" aria-hidden="true"></span><span><strong>Demo-Entwurf von Florentin</strong> für die Ludwig Seck GmbH · nicht die offizielle Website</span></div>
 
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Ludwig Seck GmbH – zur Startseite">
-        <img src="img/logo.png" alt="SECK GmbH Logo" width="373" height="103">
+        <img src="img/logo-wordmark.png" alt="SECK GmbH Logo" width="373" height="62">
         <span class="brand-sub">Auto-Teile · Zubehör<br>Kfz-Meisterwerkstatt</span>
       </a>
       <nav class="nav" id="nav" aria-label="Hauptnavigation">
@@ -42,18 +43,20 @@
       </div>
     </div>
   </header>
+  </div>
 
   <main>
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-media">
-        <img src="img/team-ohan.jpg" alt="Kfz-Mechatroniker Layth Ohan lächelnd am offenen Motorraum in der Werkstatt der Ludwig Seck GmbH" width="1200" height="1600" fetchpriority="high">
+        <img class="hero-img" src="img/team-ohan.jpg" alt="Kfz-Mechatroniker Layth Ohan lächelnd am offenen Motorraum in der Werkstatt der Ludwig Seck GmbH" width="1200" height="1600" fetchpriority="high">
+        <span class="hero-caption">Layth Ohan · Kfz-Mechatroniker</span>
       </div>
       <div class="hero-stripe" aria-hidden="true"></div>
       <div class="container hero-inner">
-        <p class="eyebrow">Saarbrücken-St. Arnual · Familienunternehmen seit 1965</p>
-        <h1 id="hero-title">Auto-Teile, Zubehör <em>und</em> Kfz-Meister&shy;werkstatt</h1>
-        <p class="hero-lead">Teile-Theke und Meisterwerkstatt unter einem Dach – mit DEKRA-Hauptuntersuchung direkt im Haus.<span class="hero-long"> Groß- und Einzelhandel für Auto-Teile seit 1965, freie Werkstatt für alle gängigen Marken seit 2003.</span></p>
+        <p class="eyebrow">Saarbrücken-St. Arnual · seit 1965</p>
+        <h1 id="hero-title">Auto-Teile, Zubehör <em>und</em> Kfz‑Meisterwerkstatt</h1>
+        <p class="hero-lead">Teile-Theke, Meisterwerkstatt und DEKRA-Hauptuntersuchung unter einem Dach.<span class="hero-long"> Groß- und Einzelhandel für Auto-Teile seit 1965, freie Werkstatt für alle gängigen Marken seit 2003.</span></p>
         <div class="hero-ctas">
           <a class="btn btn-red" href="tel:+49681851051">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
@@ -61,10 +64,16 @@
           </a>
           <a class="btn btn-ghost" href="#leistungen">Unsere Leistungen</a>
         </div>
-        <ul class="hero-badges" aria-label="Auf einen Blick">
-          <li class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg>DEKRA-Prüfstützpunkt · HU/AU im Haus</li>
-          <li class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-2.1z"/></svg>Kfz-Meisterwerkstatt · alle Marken</li>
-          <li class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mo–Fr 8–17 Uhr Verkauf · 8–16 Uhr Werkstatt</li>
+      </div>
+    </section>
+
+    <!-- USP-Leiste -->
+    <section class="usp" aria-label="Auf einen Blick">
+      <div class="container">
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>DEKRA-Prüfstützpunkt</strong>HU/AU direkt im Haus</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-2.1z"/></svg><span><strong>Kfz-Meisterwerkstatt</strong>Alle gängigen Marken</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><strong>Mo–Fr 8–17 Uhr</strong>Verkauf · Werkstatt bis 16 Uhr</span></li>
         </ul>
       </div>
     </section>
@@ -205,7 +214,7 @@
             <h3>Termin? Ein Anruf genügt.</h3>
             <p>Inspektion, Reifenwechsel, Klimaservice oder HU: Rufen Sie uns an, wir finden kurzfristig einen Termin – Montag bis Freitag von 8 bis 16 Uhr.</p>
             <a class="btn btn-red" href="tel:+49681851051">0681 851051</a>
-            <p class="price-note">* Preise laut Angaben der bisherigen Website, inkl. MwSt. – Stand bitte vor Veröffentlichung bestätigen. Aktuelle Konditionen telefonisch erfragen.</p>
+            <p class="price-note">Alle Preise inkl. MwSt. Aktuelle Konditionen und alles Weitere erfragen Sie am besten telefonisch.</p>
           </aside>
         </div>
       </div>
@@ -215,8 +224,11 @@
     <section class="brands" aria-label="Markenpartner">
       <div class="container">
         <p>Marken, die wir führen</p>
-        <ul>
+      </div>
+      <div class="marquee">
+        <ul class="marquee-track">
           <li>Michelin</li><li>Continental</li><li>Bridgestone</li><li>Goodyear</li><li>Dunlop</li><li>Hankook</li><li>Uniroyal</li><li>Kleber</li><li>Semperit</li><li>Fulda</li><li>Panther</li><li>Thule</li><li>Alutec</li><li>Rial</li><li>Liqui Moly</li><li>Mobil 1</li><li>Sonax</li><li>ClimAir</li>
+          <li aria-hidden="true">Michelin</li><li aria-hidden="true">Continental</li><li aria-hidden="true">Bridgestone</li><li aria-hidden="true">Goodyear</li><li aria-hidden="true">Dunlop</li><li aria-hidden="true">Hankook</li><li aria-hidden="true">Uniroyal</li><li aria-hidden="true">Kleber</li><li aria-hidden="true">Semperit</li><li aria-hidden="true">Fulda</li><li aria-hidden="true">Panther</li><li aria-hidden="true">Thule</li><li aria-hidden="true">Alutec</li><li aria-hidden="true">Rial</li><li aria-hidden="true">Liqui Moly</li><li aria-hidden="true">Mobil 1</li><li aria-hidden="true">Sonax</li><li aria-hidden="true">ClimAir</li>
         </ul>
       </div>
     </section>
@@ -229,7 +241,7 @@
             <p class="eyebrow">Über uns</p>
             <h2 id="ueber-title">Seit 1965 in St. Arnual</h2>
           </div>
-          <p>Die Ludwig Seck GmbH ist ein Familienunternehmen aus Saarbrücken-St. Arnual. 1965 als Groß- und Einzelhandel für Auto-Teile und Zubehör gegründet, beliefern wir bis heute Werkstätten, Gewerbe und Privatkunden aus der Region – schnell, zuverlässig und mit echter Beratung.</p>
+          <p>Die Ludwig Seck GmbH ist ein Unternehmen aus Saarbrücken-St. Arnual. 1965 als Groß- und Einzelhandel für Auto-Teile und Zubehör gegründet, beliefern wir bis heute Werkstätten, Gewerbe und Privatkunden aus der Region – schnell, zuverlässig und mit echter Beratung.</p>
           <p>Am 1. Januar 2003 kam die eigene Kfz-Werkstatt dazu. Heute führt Geschäftsführer Gerrit Seck den Betrieb, die Werkstatt leitet Kfz-Meister Martin Manderscheid. Als anerkannter DEKRA-Prüfstützpunkt nehmen wir Haupt- und Abgasuntersuchung direkt im Haus ab – Teile-Theke, Meisterwerkstatt und Prüfung unter einem Dach, an der Julius-Kiefer-Straße nahe A620 und Ostspange.</p>
           <ul class="facts" aria-label="Fakten">
             <li><strong>Freie Werkstatt</strong><span>Alle gängigen Fahrzeugtypen</span></li>
@@ -246,10 +258,6 @@
           <figure>
             <img src="img/verkaufstheke.jpg" alt="Verkaufsraum mit Theke, Schild Kfz-Meisterwerkstatt und Regalen voller Teile" width="448" height="298" loading="lazy">
             <figcaption>Teile-Theke</figcaption>
-          </figure>
-          <figure>
-            <img src="img/werkstatt-hebebuehnen.jpg" alt="Werkstatthalle mit blau-weißen Wänden und zwei Scherenhebebühnen" width="448" height="297" loading="lazy">
-            <figcaption>Werkstatthalle</figcaption>
           </figure>
         </div>
       </div>
@@ -269,7 +277,7 @@
             <div class="member-body"><strong>Gerrit Seck</strong><span>Geschäftsführer</span></div>
           </article>
           <article class="member no-photo reveal" data-delay="1">
-            <span class="initials" aria-hidden="true">MM</span>
+            <div class="photo photo-alt" aria-hidden="true"><span class="initials">MM</span></div>
             <div class="member-body"><strong>Martin Manderscheid</strong><span>Kfz-Meister, Werkstattleitung</span></div>
           </article>
           <article class="member reveal" data-delay="2">
@@ -277,8 +285,8 @@
             <div class="member-body"><strong>Christian Bucher</strong><span>Einkauf/Verkauf Auto-Teile &amp; Zubehör, Werkstattkoordinator</span></div>
           </article>
           <article class="member reveal">
-            <div class="photo"><img src="img/team-ohan.jpg" alt="Layth Fadi Jawdat Ohan, Kfz-Mechatroniker, lächelnd mit orangen Handschuhen am offenen Motorraum" width="1200" height="1600" loading="lazy"></div>
-            <div class="member-body"><strong>Layth Fadi Jawdat Ohan</strong><span>Kfz-Mechatroniker</span></div>
+            <div class="photo"><img src="img/team-ohan-portrait.jpg" alt="Layth Ohan, Kfz-Mechatroniker, Porträt in der Werkstatt" width="700" height="700" loading="lazy"></div>
+            <div class="member-body"><strong>Layth Ohan</strong><span>Kfz-Mechatroniker</span></div>
           </article>
           <article class="member reveal" data-delay="1">
             <div class="photo"><img src="img/team-kraemer.jpg" alt="Susanne Krämer, Büroassistentin, lächelnd am Schreibtisch im Büro" width="1200" height="1600" loading="lazy"></div>
@@ -297,17 +305,13 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Einblicke</p>
-          <h2 id="galerie-title">Theke, Werkstatt, Reifenlager</h2>
+          <h2 id="galerie-title">Werkstatt, Annahme, Reifenlager</h2>
         </div>
         <div class="gallery">
-          <figure class="reveal"><img src="img/werkstatt-hebebuehnen.jpg" alt="Werkstatthalle mit zwei Scherenhebebühnen im Boden" width="448" height="297" loading="lazy"><figcaption>Werkstatthalle</figcaption></figure>
-          <figure class="reveal" data-delay="1"><img src="img/werkstatt-bremsen.jpg" alt="Arbeit an der Bremsscheibe eines aufgebockten Autos" width="448" height="297" loading="lazy"><figcaption>Bremsenservice</figcaption></figure>
-          <figure class="reveal" data-delay="2"><img src="img/werkstatt-klimaservice.jpg" alt="Werkstattecke mit Werkzeugwand, Klimaservicegerät und Werkbank" width="448" height="297" loading="lazy"><figcaption>Klimaservice</figcaption></figure>
-          <figure class="reveal" data-delay="3"><img src="img/reifenlager.jpg" alt="Reifenlager mit nummerierten Regalen voller eingelagerter Kompletträder" width="448" height="297" loading="lazy"><figcaption>Reifenlager</figcaption></figure>
-          <figure class="reveal"><img src="img/verkaufstheke.jpg" alt="Verkaufsraum mit Theke und Regalen mit Teilen" width="448" height="298" loading="lazy"><figcaption>Teile-Theke</figcaption></figure>
-          <figure class="reveal" data-delay="1"><img src="img/buero-felgen.jpg" alt="Annahmebereich mit Computer, Alufelgen im Vordergrund und Schild Kfz-Klimaanlagen Service" width="448" height="298" loading="lazy"><figcaption>Annahme</figcaption></figure>
-          <figure class="reveal" data-delay="2"><img src="img/verkaufsraum-felgen.jpg" alt="Felgen-Display und Regale mit Zubehör und Ölen im Verkaufsraum" width="448" height="298" loading="lazy"><figcaption>Felgen &amp; Zubehör</figcaption></figure>
-          <figure class="reveal" data-delay="3"><img src="img/gebaeude-aussen.jpg" alt="Firmengebäude außen bei Sonne mit Fahnen" width="448" height="298" loading="lazy"><figcaption>Unser Haus in St. Arnual</figcaption></figure>
+          <figure class="reveal"><img src="img/werkstatt-hebebuehnen.jpg" alt="Werkstatthalle mit blau-weißen Wänden und zwei Scherenhebebühnen im Boden" width="448" height="297" loading="lazy"><figcaption>Werkstatthalle</figcaption></figure>
+          <figure class="reveal" data-delay="1"><img src="img/werkstatt-klimaservice.jpg" alt="Werkstattecke mit Werkzeugwand, Klimaservicegerät und Werkbank" width="448" height="297" loading="lazy"><figcaption>Klimaservice</figcaption></figure>
+          <figure class="reveal" data-delay="2"><img src="img/reifenlager.jpg" alt="Reifenlager mit nummerierten Regalen voller eingelagerter Kompletträder" width="448" height="297" loading="lazy"><figcaption>Reifenlager</figcaption></figure>
+          <figure class="reveal" data-delay="3"><img src="img/buero-felgen.jpg" alt="Annahmebereich mit Computer, Alufelgen im Vordergrund und Schild Kfz-Klimaanlagen Service" width="448" height="298" loading="lazy"><figcaption>Annahme</figcaption></figure>
         </div>
       </div>
     </section>
@@ -318,6 +322,7 @@
         <div>
           <h2 id="cta-title">Teil gesucht? Termin nötig?</h2>
           <p>Ein Anruf reicht – wir prüfen Verfügbarkeit, nennen den Preis und reservieren Ihnen einen Platz auf der Bühne.</p>
+          <a class="cta-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ludwig%20Seck%20GmbH%20Julius-Kiefer-Stra%C3%9Fe%209%2C%2066119%20Saarbr%C3%BCcken" target="_blank" rel="noopener">Bewertungen bei Google ansehen →</a>
         </div>
         <a class="btn btn-outline-light" href="tel:+49681851051">0681 851051</a>
       </div>
@@ -386,9 +391,10 @@
                 <label>Wunschtermin<input type="text" name="Wunschtermin" placeholder="z. B. nächste Woche vormittags"></label>
                 <label class="full">Anliegen<textarea name="Anliegen" rows="4" placeholder="Inspektion, Reifenwechsel, HU, Klimaservice …" required></textarea></label>
               </div>
-              <p class="form-note">Mit dem Absenden öffnet sich Ihr E-Mail-Programm mit der ausgefüllten Anfrage an info@autoteileseck.de. Angaben zur Verarbeitung: <a href="datenschutz.html">Datenschutz</a>.</p>
+              <p class="form-note">Mit dem Absenden öffnet sich Ihr E-Mail-Programm mit der ausgefüllten Anfrage an info@autoteileseck.de. Kein E-Mail-Programm am Handy? Dann einfach anrufen. Angaben zur Verarbeitung: <a href="datenschutz.html">Datenschutz</a>.</p>
               <div class="contact-ctas">
-                <button class="btn btn-red" type="submit">Anfrage senden</button>
+                <button class="btn btn-red" type="submit">Anfrage per E-Mail senden</button>
+                <a class="btn btn-outline" href="tel:+49681851051">Lieber anrufen: 0681 851051</a>
               </div>
               <p class="form-status" aria-live="polite"></p>
             </form>

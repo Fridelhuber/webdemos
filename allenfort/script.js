@@ -5,9 +5,27 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (hasIO && !reduce) document.documentElement.classList.add("has-io");
 
-  // Jahr im Footer
+  // Demo-Leiste: echte Höhe messen, damit Header und Inhalt sauber darunter beginnen
+  var demo = document.querySelector(".demo-bar");
+  if (demo) {
+    var setDemoH = function () {
+      var h = Math.ceil(demo.getBoundingClientRect().height);
+      if (h > 0) document.documentElement.style.setProperty("--demo-h", h + "px");
+    };
+    setDemoH();
+    window.addEventListener("resize", setDemoH);
+    window.addEventListener("load", setDemoH);
+    if ("ResizeObserver" in window) new ResizeObserver(setDemoH).observe(demo);
+  }
+
+  // Jahr im Footer und Betriebsjahre in der Chronik (Gründung 1968)
+  var now = new Date().getFullYear();
   var year = document.getElementById("year");
-  if (year) year.textContent = String(new Date().getFullYear());
+  if (year) year.textContent = String(now);
+  var years = now - 1968;
+  if (years > 0) {
+    document.querySelectorAll(".js-years").forEach(function (el) { el.textContent = String(years); });
+  }
 
   // Mobile-Menü
   var toggle = document.querySelector(".nav-toggle");
@@ -42,18 +60,21 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  // Kontaktformular: im Demo-Entwurf wird nichts versendet, der Besucher bekommt
-  // eine klare Rückmeldung. Nach Freischaltung (echte Formspree-ID) sendet das Formular normal.
-  var form = document.querySelector(".contact-form");
-  if (form) {
-    var status = form.querySelector(".form-status");
-    form.addEventListener("submit", function (e) {
-      if (form.action.indexOf("/f/DEMO") === -1) return;
-      e.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      var btn = form.querySelector("button[type=submit]");
-      if (btn) { btn.disabled = true; btn.textContent = "Gesendet"; }
-      if (status) status.textContent = "Vielen Dank! Im Demo-Entwurf wird noch nichts verschickt – nach Freischaltung landet Ihre Anfrage direkt bei info@allenfort.de.";
+  // Leistungen: auf schmalen Bildschirmen als aufklappbare Mini-Kacheln,
+  // ab 600px immer offen (ohne JS bleiben sie offen).
+  var mq = window.matchMedia ? window.matchMedia("(max-width: 599px)") : null;
+  var folds = document.querySelectorAll("details.card, details.more-services");
+  if (mq && folds.length) {
+    var syncFolds = function () {
+      folds.forEach(function (d) { d.open = !mq.matches; });
+    };
+    syncFolds();
+    if (mq.addEventListener) mq.addEventListener("change", syncFolds);
+    else if (mq.addListener) mq.addListener(syncFolds);
+    folds.forEach(function (d) {
+      d.addEventListener("toggle", function () {
+        if (!mq.matches && !d.open) d.open = true; // Desktop: bleibt offen
+      });
     });
   }
 

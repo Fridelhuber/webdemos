@@ -31,6 +31,43 @@
     });
   }
 
+  // Sprungleiste: Ziel-Kategorie aufklappen, bevor der Browser hinscrollt
+  document.querySelectorAll('.menu-chips a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (target && target.tagName === 'DETAILS') { target.open = true; }
+    });
+  });
+
+  // Öffnungsstatus aus den Öffnungszeiten (Mo, Mi–So 11:30–14:30 und 18:00–23:00, Di Ruhetag)
+  var HOURS = { 0: [[690, 870], [1080, 1380]], 1: [[690, 870], [1080, 1380]], 2: [], 3: [[690, 870], [1080, 1380]],
+                4: [[690, 870], [1080, 1380]], 5: [[690, 870], [1080, 1380]], 6: [[690, 870], [1080, 1380]] };
+  function fmt(m) { var h = Math.floor(m / 60), r = m % 60; return h + ':' + (r < 10 ? '0' + r : r); }
+  function openStatus(now) {
+    var day = now.getDay(), mins = now.getHours() * 60 + now.getMinutes(), slots = HOURS[day];
+    if (!slots.length) {
+      return { cls: 'is-closed', text: 'Heute Ruhetag – morgen ab ' + fmt(HOURS[(day + 1) % 7][0][0]) };
+    }
+    for (var i = 0; i < slots.length; i++) {
+      if (mins >= slots[i][0] && mins < slots[i][1]) { return { cls: 'is-open', text: 'Jetzt geöffnet · bis ' + fmt(slots[i][1]) }; }
+      if (mins < slots[i][0]) {
+        return { cls: 'is-soon', text: (i === 0 ? 'Öffnet heute um ' : 'Mittagspause – öffnet um ') + fmt(slots[i][0]) };
+      }
+    }
+    var next = HOURS[(day + 1) % 7];
+    return { cls: 'is-closed', text: next.length ? 'Geschlossen – morgen ab ' + fmt(next[0][0]) : 'Geschlossen – morgen Ruhetag' };
+  }
+  var badges = document.querySelectorAll('[data-open-status]');
+  function renderStatus() {
+    var s = openStatus(new Date());
+    badges.forEach(function (b) {
+      b.textContent = s.text;
+      b.className = 'open-badge ' + s.cls;
+      b.removeAttribute('hidden');
+    });
+  }
+  if (badges.length) { renderStatus(); window.setInterval(renderStatus, 60000); }
+
   // Header-Schatten beim Scrollen
   var header = document.querySelector('.site-header');
   function onScroll() {
